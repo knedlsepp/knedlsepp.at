@@ -22,4 +22,7 @@
       root = "${pkgs.valgrind.doc}/share/doc/valgrind/html";
     };
   };
+
+  system.autoUpgrade.enable = true;
+
 }
