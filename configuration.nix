@@ -28,6 +28,7 @@
     appName = "Knedlgit";
     enable = true;
     rootUrl = "https://gogs.knedlsepp.at/";
+    cookieSecure = true;
     extraConfig = ''
       [service]
       DISABLE_REGISTRATION = true
