@@ -32,6 +32,7 @@
     extraConfig = ''
       [service]
       DISABLE_REGISTRATION = true
+      [server]
       DISABLE_SSH = true
     '';
   };
