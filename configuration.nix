@@ -12,7 +12,7 @@ let
       </head>
       <body id="home">
         <ul>
-				  <li><a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a></li>
+          <li><a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a></li>
         </ul>
       </body>
       </html>
