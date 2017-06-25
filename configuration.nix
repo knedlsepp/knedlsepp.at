@@ -19,8 +19,14 @@
     virtualHosts."knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
-      root = "${pkgs.valgrind.doc}/share/doc/valgrind/html";
+      locations."/".proxyPass = "http://localhost:3000";
     };
+  };
+
+
+  services.gogs = {
+    enable = true;
+    rootUrl = http://localhost:3000/;
   };
 
   system.autoUpgrade.enable = true;
