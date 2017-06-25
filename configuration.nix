@@ -96,6 +96,7 @@ in
       DISABLE_REGISTRATION = true
       [server]
       DISABLE_SSH = true
+      LANDING_PAGE = explore
     '';
   };
 
