@@ -26,6 +26,7 @@
 
 
   services.gogs = {
+    appName = "Knedlgit";
     enable = true;
     rootUrl = http://localhost:3000/;
     extraConfig = ''
