@@ -16,8 +16,7 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."knedlsepp.at" = {
-      serverAliases = [ "www.knedlsepp.at" ];
+    virtualHosts."gogs.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000";
@@ -28,7 +27,7 @@
   services.gogs = {
     appName = "Knedlgit";
     enable = true;
-    rootUrl = "https://knedlsepp.at/";
+    rootUrl = "https://gogs.knedlsepp.at/";
     extraConfig = ''
       [service]
       DISABLE_REGISTRATION = true
