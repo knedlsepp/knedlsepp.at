@@ -48,8 +48,44 @@ in
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000";
     };
+    virtualHosts."test.knedlsepp.at" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        root = "/var/www/";
+        extraConfig = ''
+          include ${pkgs.nginx}/conf/uwsgi_params;
+          uwsgi_modifier1 14;
+          uwsgi_pass unix:${config.services.uwsgi.instance.vassals.php.socket};
+        '';
+      };
+    };
   };
 
+  services.uwsgi = {
+    enable = true;
+    user = "nginx";
+    group = "nginx";
+    instance = {
+      type = "emperor";
+      vassals = {
+        php = {
+          type = "normal";
+          socket = "/run/uwsgi/php.sock";
+          master = true;
+          vacuum = true;
+          processes = 4;
+          cheaper = 1;
+          php-sapi-name = "apache"; # performance tweak
+          socket-modifier1 = 14;
+          php-index = "index.php";
+          php-set = [ "session.save_handler=files" "session.save_path=/var/www/sessions" ]; # fixes session issues with Nextcloud
+          plugins = [ "php" ];
+        };
+      };
+    };
+    plugins = [ "php" ];
+  };
 
   services.gogs = {
     appName = "Knedlgit";
