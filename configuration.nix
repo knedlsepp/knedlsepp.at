@@ -14,6 +14,7 @@ let
         <ul>
           <li><a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a></li>
         </ul>
+        <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/producthunt-mind-blown-blow-your-26ufdipQqU2lhNA4g">via GIPHY</a></p>
       </body>
       </html>
     '';
