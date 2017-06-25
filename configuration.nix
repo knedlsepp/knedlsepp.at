@@ -17,6 +17,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."knedlsepp.at" = {
+      serverAliases = [ "www.knedlsepp.at" ];
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000";
