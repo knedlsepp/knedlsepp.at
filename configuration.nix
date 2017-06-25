@@ -28,7 +28,7 @@
   services.gogs = {
     appName = "Knedlgit";
     enable = true;
-    rootUrl = http://localhost:3000/;
+    rootUrl = "https://knedlsepp.at/";
     extraConfig = ''
       [service]
       DISABLE_REGISTRATION = true
