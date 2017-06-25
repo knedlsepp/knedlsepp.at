@@ -27,6 +27,10 @@
   services.gogs = {
     enable = true;
     rootUrl = http://localhost:3000/;
+    extraConfig = ''
+      [service]
+      DISABLE_REGISTRATION = true
+    '';
   };
 
   system.autoUpgrade.enable = true;
