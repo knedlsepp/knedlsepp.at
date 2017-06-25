@@ -1,4 +1,24 @@
 { config, pkgs, ... }:
+let
+  knedlsepp_at = pkgs.writeTextFile {
+    name = "index.html";
+    destination = "/share/www/index.html";
+    text = ''
+      <!DOCTYPE html>
+      <html lang="de">
+      <head>
+          <meta charset="utf-8">
+          <title>knedlsepp.at</title>
+      </head>
+      <body id="home">
+        <ul>
+				  <li><a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a></li>
+        </ul>
+      </body>
+      </html>
+    '';
+  };
+in
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
@@ -16,6 +36,12 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    virtualHosts."knedlsepp.at" = {
+      serverAliases = [ "www.knedlsepp.at" ];
+      enableACME = true;
+      forceSSL = true;
+      root = "${knedlsepp_at}/share/www/";
+    };
     virtualHosts."gogs.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
