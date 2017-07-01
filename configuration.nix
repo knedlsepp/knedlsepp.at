@@ -52,11 +52,10 @@ in
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        root = "/var/www/";
         extraConfig = ''
+          error_log /var/spool/nginx/logs/asdf.log debug;
+          uwsgi_pass unix://${config.services.uwsgi.instance.vassals.moin.socket};
           include ${pkgs.nginx}/conf/uwsgi_params;
-          uwsgi_modifier1 14;
-          uwsgi_pass unix:${config.services.uwsgi.instance.vassals.php.socket};
         '';
       };
     };
@@ -69,22 +68,15 @@ in
     instance = {
       type = "emperor";
       vassals = {
-        php = {
+        moin = {
           type = "normal";
-          socket = "/run/uwsgi/php.sock";
-          master = true;
-          vacuum = true;
-          processes = 4;
-          cheaper = 1;
-          php-sapi-name = "apache"; # performance tweak
-          socket-modifier1 = 14;
-          php-index = "index.php";
-          php-set = [ "session.save_handler=files" "session.save_path=/var/www/sessions" ]; # fixes session issues with Nextcloud
-          plugins = [ "php" ];
+          pythonPackages = self: with self; [ moinmoin ];
+          socket = "${config.services.uwsgi.runDir}/uwsgi.sock";
+          wsgi-file = "${pkgs.pythonPackages.moinmoin}/share/moin/server/moin.wsgi";
         };
       };
     };
-    plugins = [ "php" ];
+    plugins = [ "python2" ];
   };
 
   services.gogs = {
