@@ -26,7 +26,7 @@ in
   
   environment.systemPackages = with pkgs; [
     vim
-    gitAndTools.gitFull
+    gitMinimal
     lsof
     htop
   ];
