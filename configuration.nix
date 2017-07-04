@@ -24,6 +24,9 @@ in
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
   
+  nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz" "nixpkgs-overlays=https://github.com/knedlsepp/nixpkgs-overlays/archive/master.tar.gz" "nixos-config=/etc/nixos/configuration.nix" ];
+
+
   environment.systemPackages = with pkgs; [
     vim
     gitMinimal
