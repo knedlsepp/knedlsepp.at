@@ -10,11 +10,11 @@ let
           <meta charset="utf-8">
           <title>knedlsepp.at</title>
       </head>
-      <body id="home">
-        <ul>
-          <li><a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a></li>
-        </ul>
+      <body id="home" bgcolor="#000000" text="#ffffff">
+        <center>
+        <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
         <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        </center>
       </body>
       </html>
     '';
