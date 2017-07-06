@@ -111,6 +111,8 @@ in
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  services.fail2ban.enable = true;
+
   users.extraUsers.sepp = {
     isNormalUser = true;
     description = "Josef Knedlmüller";
