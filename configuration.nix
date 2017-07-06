@@ -15,6 +15,7 @@ let
         <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
         <br>
         <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
+        <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
         </center>
       </body>
       </html>
@@ -63,6 +64,11 @@ in
         '';
       };
     };
+    virtualHosts."shell.knedlsepp.at" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://localhost:4200";
+    };
   };
 
   services.uwsgi = {
@@ -83,6 +89,11 @@ in
     plugins = [ "python2" ];
   };
 
+  services.shellinabox = {
+    enable = true;
+    extraOptions = [ "--localhost-only" ]; # Nginx makes sure it's https
+  };
+
   services.gogs = {
     appName = "Knedlgit";
     enable = true;
@@ -99,5 +110,11 @@ in
   system.autoUpgrade.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+
+  users.extraUsers.sepp = {
+    isNormalUser = true;
+    description = "Josef Knedlmüller";
+    initialPassword = "foo";
+  };
 }
 
