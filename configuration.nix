@@ -58,13 +58,12 @@ in
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000";
     };
-    virtualHosts."test.knedlsepp.at" = {
+    virtualHosts."uwsgi-example.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
         extraConfig = ''
-          error_log /var/spool/nginx/logs/asdf.log debug;
-          uwsgi_pass unix://${config.services.uwsgi.instance.vassals.moin.socket};
+          uwsgi_pass unix://${config.services.uwsgi.instance.vassals.flask-helloworld.socket};
           include ${pkgs.nginx}/conf/uwsgi_params;
         '';
       };
@@ -83,11 +82,11 @@ in
     instance = {
       type = "emperor";
       vassals = {
-        moin = {
+        flask-helloworld = {
           type = "normal";
-          pythonPackages = self: with self; [ moinmoin ];
-          socket = "${config.services.uwsgi.runDir}/uwsgi.sock";
-          wsgi-file = "${pkgs.pythonPackages.moinmoin}/share/moin/server/moin.wsgi";
+          pythonPackages = self: with self; [ flask-helloworld ];
+          socket = "${config.services.uwsgi.runDir}/flask-helloworld.sock";
+          wsgi-file = "${pkgs.pythonPackages.flask-helloworld}/${pkgs.python.sitePackages}/helloworld/share/flask-helloworld.wsgi";
         };
       };
     };
