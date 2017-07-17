@@ -16,6 +16,7 @@ let
         <br>
         <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
         <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
+        <a href="https://uwsgi-example.knedlsepp.at">🐍 - uwsgi-example.knedlsepp.at</a><br><br>
         </center>
       </body>
       </html>
