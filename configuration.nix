@@ -44,6 +44,8 @@ in
     htop
   ];
 
+  services.openssh.forwardX11 = true;
+
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
