@@ -27,10 +27,6 @@ in
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
   
-  boot.initrd.postDeviceCommands= ''
-    ${pkgs.e2fsprogs}/sbin/e2fsck -fp /dev/disk/by-label/nixos
-  '';
-
 
   nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.03/nixexprs.tar.xz"
                   "nixos-config=/etc/nixos/configuration.nix"
