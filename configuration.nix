@@ -27,6 +27,8 @@ in
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
   
+  nix.gc.automatic = true;
+  nix.gc.dates = "14:09";
 
   nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.03/nixexprs.tar.xz"
                   "nixos-config=/etc/nixos/configuration.nix"
