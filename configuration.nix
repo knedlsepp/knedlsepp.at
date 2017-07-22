@@ -118,6 +118,13 @@ in
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
+  swapDevices = [
+    {
+      device = "/var/swapfile";
+      size = 2048;
+    }
+  ];
+
   services.fail2ban.enable = true;
 
   users.extraUsers.sepp = {
