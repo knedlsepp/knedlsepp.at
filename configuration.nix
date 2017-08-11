@@ -44,6 +44,8 @@ in
     htop
   ];
 
+  programs.vim.defaultEditor = true;
+
   security.hideProcessInformation = true;
 
   services.openssh.forwardX11 = true;
