@@ -44,6 +44,8 @@ in
     htop
   ];
 
+  security.hideProcessInformation = true;
+
   services.openssh.forwardX11 = true;
 
   services.nginx = {
