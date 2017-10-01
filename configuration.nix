@@ -65,7 +65,7 @@ in
     virtualHosts."gogs.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://localhost:3000";
+      locations."/".proxyPass = "http://127.0.0.1:3000";
     };
     virtualHosts."uwsgi-example.knedlsepp.at" = {
       enableACME = true;
@@ -80,7 +80,7 @@ in
     virtualHosts."shell.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
-      locations."/".proxyPass = "http://localhost:4200";
+      locations."/".proxyPass = "http://127.0.0.1:4200";
     };
   };
 
