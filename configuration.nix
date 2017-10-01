@@ -18,6 +18,17 @@ let
         <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
         <a href="https://uwsgi-example.knedlsepp.at">🐍 - uwsgi-example.knedlsepp.at</a><br><br>
         </center>
+        <center>
+          <footer>
+            <small>
+            Impressum:
+            <address>
+            Josef Kemetmüller<br>
+            Johann-Strauß-Gasse 4-6/2/8, 1040 Wien
+            </address>
+            </small>
+          </footer>
+        </center>
       </body>
       </html>
     '';
