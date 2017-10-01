@@ -30,7 +30,7 @@ in
   nix.gc.automatic = true;
   nix.gc.dates = "14:09";
 
-  nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.03/nixexprs.tar.xz"
+  nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.09/nixexprs.tar.xz"
                   "nixos-config=/etc/nixos/configuration.nix"
                   "knedlsepp-overlays=https://github.com/knedlsepp/nixpkgs-overlays/archive/master.tar.gz"
   ];
