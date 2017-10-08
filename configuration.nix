@@ -61,6 +61,10 @@ in
 
   services.openssh.forwardX11 = true;
 
+  services.journald.extraConfig = ''
+    SystemMaxUse=300M
+  '';
+
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
