@@ -15,6 +15,7 @@ let
         <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
         <br>
         <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
+        <a href="https://hydra.knedlsepp.at">🤖 - hydra.knedlsepp.at</a><br><br>
         <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
         <a href="https://uwsgi-example.knedlsepp.at">🐍 - uwsgi-example.knedlsepp.at</a><br><br>
         </center>
@@ -82,6 +83,11 @@ in
       forceSSL = true;
       locations."/".proxyPass = "http://127.0.0.1:3000";
     };
+    virtualHosts."hydra.knedlsepp.at" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/".proxyPass = "http://127.0.0.1:3001";
+    };
     virtualHosts."uwsgi-example.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
@@ -133,6 +139,14 @@ in
       DISABLE_SSH = true
       LANDING_PAGE = explore
     '';
+  };
+
+  services.hydra = {
+    enable = true;
+    hydraURL = "https://hydra.knedlsepp.at";
+    notificationSender = "hydra@knedlsepp.at";
+    port = 3001;
+    minimumDiskFree = 1; #GiB
   };
 
   system.autoUpgrade.enable = true;
