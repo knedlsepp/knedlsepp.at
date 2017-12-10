@@ -148,6 +148,14 @@ in
     port = 3001;
     minimumDiskFree = 1; #GiB
   };
+  nix.buildMachines = [
+    {
+      hostName = "localhost";
+      systems = [ "i686-linux" "x86_64-linux" ];
+      maxJobs = 6;
+      supportedFeatures = [ "kvm" "nixos-test" ];
+    }
+  ];
 
   system.autoUpgrade.enable = true;
 
