@@ -147,6 +147,7 @@ in
     notificationSender = "hydra@knedlsepp.at";
     port = 3001;
     minimumDiskFree = 1; #GiB
+    useSubstitutes = true;
   };
   nix.buildMachines = [
     {
