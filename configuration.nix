@@ -78,6 +78,27 @@ in
       forceSSL = true;
       root = "${knedlsepp_at}/share/www/";
     };
+    virtualHosts."xn--qeiaa.knedlsepp.at" = { # ❤❤❤.knedlsepp.at - Punycoded
+      enableACME = true;
+      forceSSL = true;
+      root = let
+        site = pkgs.writeTextFile {
+          name = "index.html";
+          destination = "/share/www/index.html";
+          text = ''
+            <!DOCTYPE html>
+            <html lang="de">
+            <head>
+              <meta charset="utf-8">
+              <title>❤️❤️❤️.knedlsepp.at</title>
+            </head>
+            <body>
+            <body><br><br><h1><center><div>I ❤️ 🐰</div></center></h1></body>
+            </html>
+          '';
+        }; in
+      "${site}/share/www/";
+    };
     virtualHosts."gogs.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
