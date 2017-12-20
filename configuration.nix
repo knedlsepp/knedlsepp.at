@@ -79,6 +79,22 @@ in
       root = "${knedlsepp_at}/share/www/";
     };
     virtualHosts."xn--qeiaa.knedlsepp.at" = { # ❤❤❤.knedlsepp.at - Punycoded
+      serverAliases = [
+        "xn--c6haa.knedlsepp.at"
+        "xn--yr8haa.knedlsepp.at"
+        "xn--0r8haa.knedlsepp.at"
+        "xn--1r8haa.knedlsepp.at"
+        "xn--2r8haa.knedlsepp.at"
+        "xn--3r8haa.knedlsepp.at"
+        "xn--4r8haa.knedlsepp.at"
+        "xn--5r8haa.knedlsepp.at"
+        "xn--6r8haa.knedlsepp.at"
+        "xn--7r8haa.knedlsepp.at"
+        "xn--8r8haa.knedlsepp.at"
+        "xn--9r8haa.knedlsepp.at"
+        "xn--g6haa.knedlsepp.at"
+        "xn--r28haa.knedlsepp.at"
+      ];
       enableACME = true;
       forceSSL = true;
       root = let
@@ -91,6 +107,13 @@ in
             <head>
               <meta charset="utf-8">
               <title>❤️❤️❤️.knedlsepp.at</title>
+              <style>
+              h1 {
+                  display: block;
+                  font-size: 8em;
+                  font-weight: bold;
+              }
+              </style>
             </head>
             <body>
             <body><br><br><h1><center><div>I ❤️ 🐰</div></center></h1></body>
