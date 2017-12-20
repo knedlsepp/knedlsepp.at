@@ -213,8 +213,6 @@ in
     }
   ];
 
-  services.fail2ban.enable = true;
-
   users.extraUsers.sepp = {
     isNormalUser = true;
     description = "Josef Knedlmüller";
