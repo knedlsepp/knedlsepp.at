@@ -38,15 +38,18 @@ in
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
-  
-  nix.gc.automatic = true;
-  nix.gc.dates = "14:09";
 
-  nix.nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.09/nixexprs.tar.xz"
-                  "nixos-config=/etc/nixos/configuration.nix"
-                  "knedlsepp-overlays=https://github.com/knedlsepp/nixpkgs-overlays/archive/master.tar.gz"
-  ];
-
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "14:09";
+    };
+    useSandbox = true;
+    nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-17.09/nixexprs.tar.xz"
+                "nixos-config=/etc/nixos/configuration.nix"
+                "knedlsepp-overlays=https://github.com/knedlsepp/nixpkgs-overlays/archive/master.tar.gz"
+    ];
+  };
   nixpkgs.overlays = [ (import <knedlsepp-overlays>) ]; # Be aware that we need a nix-collect-garbage to fetch the most current version
 
   environment.systemPackages = with pkgs; [
