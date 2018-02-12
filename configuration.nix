@@ -17,6 +17,7 @@ let
         <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
         <a href="https://hydra.knedlsepp.at">🤖 - hydra.knedlsepp.at</a><br><br>
         <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
+        <a href="https://mattermost.knedlsepp.at">💬 - mattermost.knedlsepp.at</a><br><br>
         <a href="https://uwsgi-example.knedlsepp.at">🐍 - uwsgi-example.knedlsepp.at</a><br><br>
         </center>
         <center>
@@ -151,6 +152,14 @@ in
       forceSSL = true;
       locations."/".proxyPass = "http://127.0.0.1:4200";
     };
+    virtualHosts."mattermost.knedlsepp.at" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8065";
+        proxyWebsockets = true;
+      };
+    };
   };
 
   services.uwsgi = {
@@ -174,6 +183,11 @@ in
   services.shellinabox = {
     enable = true;
     extraOptions = [ "--localhost-only" ]; # Nginx makes sure it's https
+  };
+
+  services.mattermost = {
+    enable = true;
+    siteUrl = "https://mattermost.knedlsepp.at";
   };
 
   services.gogs = {
