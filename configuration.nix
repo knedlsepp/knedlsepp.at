@@ -51,6 +51,7 @@ in
     ];
   };
   nixpkgs.overlays = [ (import <knedlsepp-overlays>) ]; # Be aware that we need a nix-collect-garbage to fetch the most current version
+  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     vim
