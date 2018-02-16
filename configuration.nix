@@ -78,6 +78,7 @@ in
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts."knedlsepp.at" = {
+      default = true;
       serverAliases = [ "www.knedlsepp.at" ];
       enableACME = true;
       forceSSL = true;
