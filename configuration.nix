@@ -46,12 +46,10 @@ in
       dates = "14:09";
     };
     useSandbox = true;
-    nixPath = [ "nixpkgs=https://nixos.org/channels/nixos-18.03/nixexprs.tar.xz"
-                "nixos-config=/etc/nixos/configuration.nix"
-                "knedlsepp-overlays=https://github.com/knedlsepp/nixpkgs-overlays/archive/master.tar.gz"
-    ];
   };
-  nixpkgs.overlays = [ (import <knedlsepp-overlays>) ]; # Be aware that we need a nix-collect-garbage to fetch the most current version
+  nixpkgs.overlays = [
+    (import (fetchGit https://github.com/knedlsepp/nixpkgs-overlays.git))
+  ];
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -221,8 +219,10 @@ in
     }
   ];
 
-  system.autoUpgrade.enable = true;
-
+  system.autoUpgrade = {
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-18.03";
+  };
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   swapDevices = [
