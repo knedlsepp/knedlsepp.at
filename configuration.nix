@@ -59,6 +59,7 @@ in
     gitMinimal
     lsof
     htop
+    duc
   ];
 
   programs.vim.defaultEditor = true;
