@@ -9,6 +9,9 @@
       dates = "14:09";
     };
     useSandbox = true;
+    extraOptions = ''
+      auto-optimise-store = true
+    '';
   };
   nixpkgs.overlays = [
     (import (fetchGit https://github.com/knedlsepp/nixpkgs-overlays.git))
