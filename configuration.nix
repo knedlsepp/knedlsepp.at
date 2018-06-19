@@ -1,41 +1,4 @@
 { config, pkgs, ... }:
-let
-  knedlsepp_at = pkgs.writeTextFile {
-    name = "index.html";
-    destination = "/share/www/index.html";
-    text = ''
-      <!DOCTYPE html>
-      <html lang="de">
-      <head>
-          <meta charset="utf-8">
-          <title>knedlsepp.at</title>
-      </head>
-      <body id="home" bgcolor="#000000" link="#eeeeee" vlink="#dddddd" alink="#cccccc" text="#ffffff">
-        <center>
-        <iframe src="https://giphy.com/embed/26ufdipQqU2lhNA4g" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-        <br>
-        <a href="https://gogs.knedlsepp.at">💾 - gogs.knedlsepp.at</a><br><br>
-        <a href="https://hydra.knedlsepp.at">🤖 - hydra.knedlsepp.at</a><br><br>
-        <a href="https://shell.knedlsepp.at">🐚 - shell.knedlsepp.at</a><br><br>
-        <a href="https://mattermost.knedlsepp.at">💬 - mattermost.knedlsepp.at</a><br><br>
-        <a href="https://uwsgi-example.knedlsepp.at">🐍 - uwsgi-example.knedlsepp.at</a><br><br>
-        </center>
-        <center>
-          <footer>
-            <small>
-            Impressum:
-            <address>
-            Josef Kemetmüller<br>
-            Johann-Strauß-Gasse 4-6/2/8, 1040 Wien
-            </address>
-            </small>
-          </footer>
-        </center>
-      </body>
-      </html>
-    '';
-  };
-in
 {
   imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
   ec2.hvm = true;
@@ -80,7 +43,10 @@ in
       serverAliases = [ "www.knedlsepp.at" ];
       enableACME = true;
       forceSSL = true;
-      root = "${knedlsepp_at}/share/www/";
+      root = builtins.fetchGit {
+        url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
+        rev = "ac928df94100b0aea04f772ebb535c90829d54c6";
+      };
     };
     virtualHosts."xn--qeiaa.knedlsepp.at" = { # ❤❤❤.knedlsepp.at - Punycoded
       serverAliases = [
