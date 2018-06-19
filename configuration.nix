@@ -153,6 +153,12 @@
   services.mattermost = {
     enable = true;
     siteUrl = "https://mattermost.knedlsepp.at";
+    extraConfig = {
+      EmailSettings = {
+        SendEmailNotifications = true; # TODO: Set up SMTP server
+        EnablePreviewModeBanner = false;
+      };
+    };
   };
 
   services.gogs = {
