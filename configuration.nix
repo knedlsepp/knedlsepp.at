@@ -198,6 +198,7 @@
     enable = true;
     channel = "https://nixos.org/channels/nixos-18.03";
   };
+  networking.hostName = "knedlsepp-aws";
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   swapDevices = [
