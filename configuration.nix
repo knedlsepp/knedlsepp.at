@@ -16,6 +16,8 @@
   nixpkgs.overlays = [
     (import (fetchGit https://github.com/knedlsepp/nixpkgs-overlays.git))
   ];
+  time.timeZone = "Europe/Vienna";
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
