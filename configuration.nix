@@ -45,7 +45,7 @@
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "ac928df94100b0aea04f772ebb535c90829d54c6";
+        rev = "6bb09bcca1bd39344d4e568c70b2ad31fd29f1bf";
       };
     };
     virtualHosts."xn--qeiaa.knedlsepp.at" = { # ❤❤❤.knedlsepp.at - Punycoded
