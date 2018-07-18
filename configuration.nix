@@ -93,7 +93,7 @@
           <body id="home">
             <ul>
               <center>
-              <iframe src="https://giphy.com/embed/W8krmZSDxPIfm" width="480" height="275" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/party-night-weekend-W8krmZSDxPIfm"></a></p>
+              <iframe src="https://giphy.com/embed/W8krmZSDxPIfm" width="600" height="353" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/party-night-weekend-W8krmZSDxPIfm"></a></p>
             </ul>
           <span id=box><center>Feiert<br></center></span>
           <center>mit mir<br></center>
