@@ -100,6 +100,9 @@
           <span id=box><center>30<br></center></span>
           <center>Jahre<br></center>
           <span id=box><center>Knedlsepp<br></center></span>
+          <center>
+          <iframe src="https://giphy.com/embed/DlGaTfcMeDmz6" width="600" height="343" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dance-airplane-boogie-DlGaTfcMeDmz6"></a></p>
+          </center>
           </body>
           </html>
         '';
