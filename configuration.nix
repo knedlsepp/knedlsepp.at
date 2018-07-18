@@ -53,6 +53,64 @@
         rev = "6bb09bcca1bd39344d4e568c70b2ad31fd29f1bf";
       };
     };
+    virtualHosts."30.jahre.knedlsepp.at" = let
+      _30_jahre = pkgs.writeTextFile {
+        name = "index.html";
+        destination = "/share/www/index.html";
+        text = ''
+          <!DOCTYPE html>
+          <html lang="de">
+          <head>
+              <meta charset="utf-8">
+              <title>knedlsepp.at</title>
+              <style>
+                body {background-color: powderblue;}
+                h1   {color: blue;}
+                p    {color: red;}
+                @keyframes fontbulger {
+                  0% {
+                    font-size: 70px;
+                  }
+                  20% {
+                    font-size: 110px;
+                  }
+                  50% {
+                    font-size: 130px;
+                  }
+                  70% {
+                    font-size: 80px;
+                  }
+                  100% {
+                    font-size: 70px;
+                  }
+                }
+
+                #box {
+                   animation: fontbulger 1s infinite;
+                }
+              </style>
+          </head>
+          <body id="home">
+            <ul>
+              <center>
+              <iframe src="https://giphy.com/embed/W8krmZSDxPIfm" width="480" height="275" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/party-night-weekend-W8krmZSDxPIfm"></a></p>
+            </ul>
+          <span id=box><center>Feiert<br></center></span>
+          <center>mit mir<br></center>
+          <span id=box><center>30<br></center></span>
+          <center>Jahre<br></center>
+          <span id=box><center>Knedlsepp<br></center></span>
+          </body>
+          </html>
+        '';
+      };
+    in
+    {
+      serverAliases = [ "www.30.jahre.knedlsepp.at" ];
+      enableACME = true;
+      forceSSL = true;
+      root = "${_30_jahre}/share/www/";
+    };
     virtualHosts."xn--qeiaa.knedlsepp.at" = { # ❤❤❤.knedlsepp.at - Punycoded
       serverAliases = [
         "xn--c6haa.knedlsepp.at"
