@@ -69,24 +69,28 @@
                 p    {color: red;}
                 @keyframes fontbulger {
                   0% {
-                    font-size: 70px;
+                    font-size: 50px;
                   }
                   20% {
-                    font-size: 110px;
-                  }
-                  50% {
-                    font-size: 130px;
-                  }
-                  70% {
                     font-size: 80px;
                   }
+                  50% {
+                    font-size: 100px;
+                  }
+                  70% {
+                    font-size: 60px;
+                  }
                   100% {
-                    font-size: 70px;
+                    font-size: 50px;
                   }
                 }
 
                 #box {
                    animation: fontbulger 1s infinite;
+                }
+                #box-rev {
+                   animation: fontbulger 1s infinite;
+                   animation-direction: alternate;
                 }
               </style>
           </head>
@@ -96,9 +100,9 @@
               <iframe src="https://giphy.com/embed/W8krmZSDxPIfm" width="600" height="353" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/party-night-weekend-W8krmZSDxPIfm"></a></p>
             </ul>
           <span id=box><center>Feiert<br></center></span>
-          <center>mit mir<br></center>
+          <span id=box-rev><center>mit mir<br></center></span>
           <span id=box><center>30<br></center></span>
-          <center>Jahre<br></center>
+          <span id=box-rev><center>Jahre<br></center></span>
           <span id=box><center>Knedlsepp<br></center></span>
           <center>
           <iframe src="https://giphy.com/embed/DlGaTfcMeDmz6" width="600" height="343" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dance-airplane-boogie-DlGaTfcMeDmz6"></a></p>
