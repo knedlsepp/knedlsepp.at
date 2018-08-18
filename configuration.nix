@@ -119,6 +119,7 @@
               USE_I18N = True
               USE_L10N = True
               USE_TZ = True
+              STATIC_ROOT = '/tmp/coffeemachine/static/'
               STATIC_URL = '/static/'
             '';
           };
@@ -287,6 +288,11 @@
     virtualHosts."uwsgi-example.knedlsepp.at" = {
       enableACME = true;
       forceSSL = true;
+      locations."/static/" = {
+        extraConfig = ''
+          alias             /tmp/coffeemachine/static/;
+        '';
+      };
       locations."/" = {
         extraConfig = ''
           uwsgi_pass unix://${config.services.uwsgi.instance.vassals.coffeemachine.socket};
