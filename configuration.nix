@@ -196,6 +196,8 @@
     }
   ];
 
+  virtualisation.docker.enable = true;
+
   system.autoUpgrade = {
     enable = true;
     channel = "https://nixos.org/channels/nixos-18.03";
@@ -214,6 +216,7 @@
     isNormalUser = true;
     description = "Josef Knedlmüller";
     initialPassword = "foo";
+    extraGroups = [ "docker" ];
   };
 
   # This value determines the NixOS release with which your system is to be
