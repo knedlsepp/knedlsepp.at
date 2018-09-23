@@ -26,9 +26,18 @@
     lsof
     htop
     duc
+    fzf
   ];
 
   programs.vim.defaultEditor = true;
+
+  programs.bash = {
+    loginShellInit = ''
+      if command -v fzf-share >/dev/null; then
+        source "$(fzf-share)/key-bindings.bash"
+      fi
+    '';
+  };
 
   security.hideProcessInformation = true;
 
