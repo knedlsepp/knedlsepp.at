@@ -21,6 +21,8 @@ in {
   time.timeZone = "Europe/Vienna";
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.packageOverrides = super: let self = super.pkgs; in {
+  };
 
   environment.systemPackages = with pkgs; [
     vim
@@ -176,7 +178,7 @@ in {
     extraConfig = {
       EmailSettings = {
         SendEmailNotifications = true; # TODO: Set up SMTP server
-        EnablePreviewModeBanner = false;
+        EnablePreviewModeBanner = true;
       };
     };
   };
@@ -211,14 +213,16 @@ in {
     }
   ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
 
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     channel = "https://nixos.org/channels/nixos-18.03";
   };
   networking.hostName = "knedlsepp-aws";
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443
+   5900 5901 # VNC
+  ];
 
   swapDevices = [
     {
