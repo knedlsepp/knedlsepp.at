@@ -114,6 +114,83 @@ in {
         }; in
       "${site}/share/www/";
     };
+    virtualHosts."party.${domain-name}" = {
+      enableACME = true;
+      forceSSL = true;
+      root = let
+        site = pkgs.writeTextFile {
+          name = "index.html";
+          destination = "/share/www/index.html";
+          text = ''
+            <!DOCTYPE html>
+            <html><head><meta charset=utf-8>
+            <title>KnödelZ Activity Generator</title>
+            <meta name="viewport" content="width=device-width">
+            <style type="text/css">
+                html, body {
+                    height: 100%;
+                    margin: 0px;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 100pt;
+                    background-color:#0388fc;
+                }
+                .container {
+                    height: 100%;
+                    text-align: center;
+                    vertical-align: middle;
+                    font-size: 100pt;
+                    color: #003fa3;
+
+                }
+            </style>
+            <script>
+            window.addEventListener('load', function() {
+            // sleep time expects milliseconds
+            function sleep (time) {
+              return new Promise((resolve) => setTimeout(resolve, time));
+            }
+                var waitingMessage = "Wir berechnen deinen Partyaszendenten";
+                var b = document.getElementById('b');
+                var o = document.getElementById('o'),
+                report = function(e) {
+                    var textArray = [
+                        'am 90s Dancefloor abshaken.',
+                        'mit einer Personen gleichen Sternzeichen schnapseln.',
+                        'jemanden zum Beer pong herausfordern.',
+                        'eine Runde Looping Louie anzetteln. ',
+                    ];
+                    var randomNumber = Math.floor(Math.random()*textArray.length);
+
+                    var s = textArray[randomNumber];
+
+                    delayedInnerHTML(waitingMessage);
+                    sleep(2000).then(() => {
+                    setTimeout(function() { delayedInnerHTML(s) }, 0);
+                      sleep(8000).then(() => {
+                         delayedInnerHTML("???");
+                      });
+                    });
+                }
+
+                /* Hack to work around new iOS8 behavior where innerHTML counts as a content change - previously, it was safe to use, see http://www.quirksmode.org/blog/archives/2014/02/the_ios_event_c.html */
+                delayedInnerHTML = function(s) {
+                    o.innerHTML = s;
+                }
+                
+                /* and here we have it...the naive approach to handling touch */
+                var clickEvent = ('ontouchstart' in window ? 'touchend' : 'click');
+                b.addEventListener(clickEvent, report, false);
+
+            }, false);
+            </script>
+            </head><body id="b" style="">
+            <output class="container" id="o" >Drück mich</output>
+            </body></html>
+          '';
+        }; in
+      "${site}/share/www/";
+    };
     virtualHosts."gogs.${domain-name}" = {
       enableACME = true;
       forceSSL = true;
