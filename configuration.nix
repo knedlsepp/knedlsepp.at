@@ -132,15 +132,14 @@ in {
                     margin: 0px;
                     text-align: center;
                     vertical-align: middle;
-                    font-size: 50pt;
-                    background-color:#0388fc;
+                    font-size: 30pt;
+                    background-color:#ff8c00;
                 }
                 .container {
                     height: 100%;
                     text-align: center;
                     vertical-align: middle;
-                    font-size: 50pt;
-                    color: #003fa3;
+                    font-size: 30pt;
                 }
             </style>
             <script>
@@ -149,28 +148,44 @@ in {
             function sleep (time) {
               return new Promise((resolve) => setTimeout(resolve, time));
             }
-                var waitingMessage = "Wir berechnen deinen Party-Aszendenten...";
+                var waitingMessage = "<br>Einen Moment, wir berechnen deinen Party-Aszendenten.<br><br>Du wirst heute...";
                 var b = document.getElementById('b');
                 var o = document.getElementById('o'),
                 report = function(e) {
                     var textArray = [
+                        'Dich heute mit deinen Dancemoves von der Partymasse abheben.',
                         'den 90s Dancefloor regieren.',
-                        'mit Person gleichen Anfangsbuchstabens einen Schnaps trinken.',
+                        'mit einer Person mit gleichem Anfangsbuchstaben einen Schnaps trinken.',
+                        'Einen Kichererbsen-Knödel vernaschen.',
+                        'jetzt mit Christl einen Schnaps trinken.',
+                        'eine Holzlaterne mitnehmen.',
+                        'Dich heute Abend mit Herbert vorstellen.',
+                        'einen Rugbyball verdrücken.',
                         'morgen von nichts mehr wissen.',
+                        'über Evas Zimmer die Partyjacke des Abends finden.',
                         'jemanden zum Beer Pong herausfordern.',
-                        'nicht alleine heimgehen (zumindest mit Rausch!)',
-                        'eine Runde Looping Louie anzetteln. ',
+                        'jemanden auf Deinen Schultern herumtragen.',
+                        'morgen mit einem Toast an der Backe aufwachen.',
+                        'beim Beer Pong gewinnen.',
+                        'deine Unterhose verlieren.',
+                        'eine Polonaise anzetteln.',
+                        'den Enzianschnaps verfluchen.',
+                        'deine Schuhe verlieren.',
+                        'nicht alleine heimgehen<br>(zumindest mit am Rausch!).',
+                        'eine Runde Looping Louie anzetteln.',
                     ];
                     var randomNumber = Math.floor(Math.random()*textArray.length);
 
-                    var s = textArray[randomNumber];
 
                     o.innerHTML = waitingMessage;
-                    sleep(2000).then(() => {
-                        setTimeout(function() { delayedInnerHTML(s) }, 0);
+                    sleep(3000).then(() => {
+                        var s = "...<br>" + textArray[randomNumber];
+                        delayedInnerHTML(s);
+                        //setTimeout(function() { delayedInnerHTML(s) }, 0);
                     });
-                    sleep(1000).then(() => {
-                         delayedInnerHTML("???");
+                    sleep(7500).then(() => {
+                        delayedInnerHTML("<br>???");
+                        //setTimeout(function() { delayedInnerHTML("<br>???") }, 0);
                     });
 
                 }
@@ -187,7 +202,7 @@ in {
             }, false);
             </script>
             </head><body id="b" style="">
-            <output class="container" id="o" >???</output>
+            <output class="container" id="o" ><br>???</output>
             </body></html>
           '';
         }; in
