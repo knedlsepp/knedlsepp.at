@@ -124,7 +124,7 @@ in {
           text = ''
             <!DOCTYPE html>
             <html><head><meta charset=utf-8>
-            <title>KnödelZ Activity Generator</title>
+            <title>KnödelZ Sternstunden</title>
             <meta name="viewport" content="width=device-width">
             <style type="text/css">
                 html, body {
@@ -132,16 +132,15 @@ in {
                     margin: 0px;
                     text-align: center;
                     vertical-align: middle;
-                    font-size: 100pt;
+                    font-size: 50pt;
                     background-color:#0388fc;
                 }
                 .container {
                     height: 100%;
                     text-align: center;
                     vertical-align: middle;
-                    font-size: 100pt;
+                    font-size: 50pt;
                     color: #003fa3;
-
                 }
             </style>
             <script>
@@ -150,34 +149,37 @@ in {
             function sleep (time) {
               return new Promise((resolve) => setTimeout(resolve, time));
             }
-                var waitingMessage = "Wir berechnen deinen Partyaszendenten";
+                var waitingMessage = "Wir berechnen deinen Party-Aszendenten...";
                 var b = document.getElementById('b');
                 var o = document.getElementById('o'),
                 report = function(e) {
                     var textArray = [
-                        'am 90s Dancefloor abshaken.',
-                        'mit einer Personen gleichen Sternzeichen schnapseln.',
-                        'jemanden zum Beer pong herausfordern.',
+                        'den 90s Dancefloor regieren.',
+                        'mit Person gleichen Anfangsbuchstabens einen Schnaps trinken.',
+                        'morgen von nichts mehr wissen.',
+                        'jemanden zum Beer Pong herausfordern.',
+                        'nicht alleine heimgehen (zumindest mit Rausch!)',
                         'eine Runde Looping Louie anzetteln. ',
                     ];
                     var randomNumber = Math.floor(Math.random()*textArray.length);
 
                     var s = textArray[randomNumber];
 
-                    delayedInnerHTML(waitingMessage);
+                    o.innerHTML = waitingMessage;
                     sleep(2000).then(() => {
-                    setTimeout(function() { delayedInnerHTML(s) }, 0);
-                      sleep(8000).then(() => {
-                         delayedInnerHTML("???");
-                      });
+                        setTimeout(function() { delayedInnerHTML(s) }, 0);
                     });
+                    sleep(1000).then(() => {
+                         delayedInnerHTML("???");
+                    });
+
                 }
 
                 /* Hack to work around new iOS8 behavior where innerHTML counts as a content change - previously, it was safe to use, see http://www.quirksmode.org/blog/archives/2014/02/the_ios_event_c.html */
                 delayedInnerHTML = function(s) {
                     o.innerHTML = s;
                 }
-                
+
                 /* and here we have it...the naive approach to handling touch */
                 var clickEvent = ('ontouchstart' in window ? 'touchend' : 'click');
                 b.addEventListener(clickEvent, report, false);
@@ -185,7 +187,7 @@ in {
             }, false);
             </script>
             </head><body id="b" style="">
-            <output class="container" id="o" >Drück mich</output>
+            <output class="container" id="o" >???</output>
             </body></html>
           '';
         }; in
