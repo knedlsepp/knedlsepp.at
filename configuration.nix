@@ -79,7 +79,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "6bb09bcca1bd39344d4e568c70b2ad31fd29f1bf";
+        rev = "a8378b8b27a47308a4600f4c13a30cff6a3d05cf";
       };
     };
     virtualHosts."xn--qeiaa.${domain-name}" = { # ❤❤❤.${domain-name} - Punycoded
@@ -160,7 +160,7 @@ in {
             function sleep (time) {
               return new Promise((resolve) => setTimeout(resolve, time));
             }
-                var waitingMessage = "<br>Einen Moment, wir berechnen deinen Party-Aszendenten.<br><br>Du wirst heute...";
+                var waitingMessage = "<br>Einen Moment, wir berechnen deinen Party-Aszendenten.<br><br>Du wirst ...";
                 var b = document.getElementById('b');
                 var o = document.getElementById('o'),
                 report = function(e) {
@@ -185,6 +185,7 @@ in {
                         'deine Schuhe verlieren.',
                         'nicht alleine heimgehen<br>(zumindest mit am Rausch!).',
                         'eine Runde Looping Louie anzetteln.',
+                        'dem Horoskop beweisen, dass Du noch nicht zu alt für einen Vollrausch bist',
                     ];
                     var randomNumber = Math.floor(Math.random()*textArray.length);
 
