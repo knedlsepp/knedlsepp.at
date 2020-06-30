@@ -15,10 +15,20 @@ in {
       auto-optimise-store = true
     '';
   };
-  nixpkgs.overlays = [
+  nixpkgs.overlays = let
+    workaroundBrokenGDAL = self: super: {
+      hdf4 = super.hdf4.overrideAttrs(o: {
+        doCheck = false;
+      });
+    };
+  in [
     (import (fetchGit https://github.com/knedlsepp/nixpkgs-overlays.git))
   ];
   time.timeZone = "Europe/Vienna";
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.0.2u"
+  ];
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.packageOverrides = super: let self = super.pkgs; in {
@@ -47,6 +57,8 @@ in {
     '';
   };
 
+  security.acme.email = "josef.kemetmueller@gmail.com";
+  security.acme.acceptTerms = true;
   security.hideProcessInformation = true;
 
   services.openssh.forwardX11 = true;
@@ -297,6 +309,7 @@ in {
     port = 3001;
     minimumDiskFree = 1; #GiB
     useSubstitutes = true;
+    package = pkgs.hydra-unstable;
   };
   nix.buildMachines = [
     {
