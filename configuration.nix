@@ -12,7 +12,7 @@ in {
     extraOptions = ''
       auto-optimise-store = true
       min-free = ${toString (3 * 1024 * 1024 * 1024)}
-      max-free = ${toString (6 * 1024 * 1024 * 1024)};
+      max-free = ${toString (6 * 1024 * 1024 * 1024)}
     '';
     buildMachines = [
       {
