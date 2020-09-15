@@ -6,14 +6,27 @@ in {
   ec2.hvm = true;
 
   nix = {
+    autoOptimiseStore = true;
+    daemonNiceLevel = 5;
+    daemonIONiceLevel = 5;
+    extraOptions = ''
+      auto-optimise-store = true
+      min-free = ${toString (3 * 1024 * 1024 * 1024)}
+      max-free = ${toString (6 * 1024 * 1024 * 1024)};
+    '';
+    buildMachines = [
+      {
+        hostName = "localhost";
+        systems = [ "i686-linux" "x86_64-linux" ];
+        maxJobs = 6;
+        supportedFeatures = [ "kvm" "nixos-test" ];
+      }
+    ];
     gc = {
       automatic = true;
       dates = "14:09";
     };
     useSandbox = true;
-    extraOptions = ''
-      auto-optimise-store = true
-    '';
   };
   nixpkgs.overlays = let
     workaroundBrokenGDAL = self: super: {
@@ -312,15 +325,6 @@ in {
     useSubstitutes = true;
     package = pkgs.hydra-unstable;
   };
-  nix.buildMachines = [
-    {
-      hostName = "localhost";
-      systems = [ "i686-linux" "x86_64-linux" ];
-      maxJobs = 6;
-      supportedFeatures = [ "kvm" "nixos-test" ];
-    }
-  ];
-
   virtualisation.docker.enable = false;
 
   system.autoUpgrade = {
