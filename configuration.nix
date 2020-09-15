@@ -28,15 +28,7 @@ in {
     };
     useSandbox = true;
   };
-  nixpkgs.overlays = let
-    workaroundBrokenGDAL = self: super: {
-      hdf4 = super.hdf4.overrideAttrs(o: {
-        doCheck = false;
-      });
-    };
-  in [
-    (import (fetchGit https://github.com/knedlsepp/nixpkgs-overlays.git))
-  ];
+  nixpkgs.overlays = [ ];
   time.timeZone = "Europe/Vienna";
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -239,16 +231,6 @@ in {
       forceSSL = true;
       locations."/".proxyPass = "http://127.0.0.1:3001";
     };
-    virtualHosts."uwsgi-example.${domain-name}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        extraConfig = ''
-          uwsgi_pass unix://${config.services.uwsgi.instance.vassals.flask-helloworld.socket};
-          include ${pkgs.nginx}/conf/uwsgi_params;
-        '';
-      };
-    };
     virtualHosts."shell.${domain-name}" = {
       enableACME = true;
       forceSSL = true;
@@ -262,24 +244,6 @@ in {
         proxyWebsockets = true;
       };
     };
-  };
-
-  services.uwsgi = {
-    enable = true;
-    user = "nginx";
-    group = "nginx";
-    instance = {
-      type = "emperor";
-      vassals = {
-        flask-helloworld = {
-          type = "normal";
-          pythonPackages = self: with self; [ flask-helloworld ];
-          socket = "${config.services.uwsgi.runDir}/flask-helloworld.sock";
-          wsgi-file = "${pkgs.pythonPackages.flask-helloworld}/${pkgs.python.sitePackages}/helloworld/share/flask-helloworld.wsgi";
-        };
-      };
-    };
-    plugins = [ "python2" ];
   };
 
   services.shellinabox = {
