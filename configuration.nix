@@ -328,8 +328,8 @@ in {
   virtualisation.docker.enable = false;
 
   system.autoUpgrade = {
-    enable = false;
-    channel = "https://nixos.org/channels/nixos-18.03";
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-20.09";
   };
   networking.hostName = "knedlsepp-aws";
   networking.firewall.allowedTCPPorts = [ 80 443
