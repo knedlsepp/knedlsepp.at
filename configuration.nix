@@ -92,7 +92,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "a8378b8b27a47308a4600f4c13a30cff6a3d05cf";
+        rev = "eee2a291a6e957672427082c4df8fdc67c9c35fa";
       };
     };
     virtualHosts."xn--qeiaa.${domain-name}" = { # ❤❤❤.${domain-name} - Punycoded
@@ -234,11 +234,6 @@ in {
         }; in
       "${site}/share/www/";
     };
-    virtualHosts."gogs.${domain-name}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://127.0.0.1:3000";
-    };
     virtualHosts."hydra.${domain-name}" = {
       enableACME = true;
       forceSSL = true;
@@ -301,19 +296,6 @@ in {
         EnablePreviewModeBanner = true;
       };
     };
-  };
-
-  services.gogs = {
-    appName = "Knedlgit";
-    enable = true;
-    rootUrl = "https://gogs.${domain-name}/";
-    extraConfig = ''
-      [service]
-      DISABLE_REGISTRATION = true
-      [server]
-      DISABLE_SSH = true
-      LANDING_PAGE = explore
-    '';
   };
 
   services.hydra = {
