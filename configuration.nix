@@ -28,7 +28,22 @@ in {
     };
     useSandbox = true;
   };
-  nixpkgs.overlays = [ ];
+  nixpkgs.overlays = [ (self: super: {
+    among-sus = pkgs.stdenv.mkDerivation rec {
+      name = "among-sus-${src.shortRev}";
+      src = builtins.fetchGit {
+        url = "file:///root/among-sus/";
+        rev = "fada1e33055e6ceb49dc959c2be0fe8afbfa5897";
+        # url = "https://git.sr.ht/~martijnbraam/among-sus";
+        # rev = "4504fb3cdade26457ef6f3ec1fb53a485f9c40d5";
+      };
+      installPhase = ''
+        mkdir -p $out/bin
+        cp among-sus $out/bin/
+      '';
+    };
+  }
+  )];
   time.timeZone = "Europe/Vienna";
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -46,6 +61,7 @@ in {
     htop
     duc
     fzf
+    among-sus
   ];
 
   programs.vim.defaultEditor = true;
@@ -131,6 +147,14 @@ in {
         }; in
       "${site}/share/www/";
     };
+    virtualHosts."among-us.${domain-name}" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3002";
+        proxyWebsockets = true;
+      };
+    };
     virtualHosts."hydra.${domain-name}" = {
       enableACME = true;
       forceSSL = true;
@@ -166,7 +190,22 @@ in {
       };
     };
   };
-
+  systemd.services.among-us-server = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      DynamicUser = true;
+      ExecStart = "${pkgs.among-sus}/bin/among-sus";
+      Restart = "always";
+    };
+  };
+  systemd.services.among-us-server-web = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      DynamicUser = true;
+      ExecStart = "${pkgs.gotty}/bin/gotty -w -p 3002 ${pkgs.netcat}/bin/nc localhost 1234";
+      Restart = "always";
+    };
+  };
   services.hydra = {
     enable = true;
     hydraURL = "https://hydra.${domain-name}";
@@ -184,6 +223,7 @@ in {
   };
   networking.hostName = "knedlsepp-aws";
   networking.firewall.allowedTCPPorts = [ 80 443
+   1234 3002 # Among us
    5900 5901 # VNC
   ];
 
