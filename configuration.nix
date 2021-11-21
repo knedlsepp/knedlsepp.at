@@ -78,6 +78,15 @@ in {
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    virtualHosts."josefundlena.at" = {
+      serverAliases = [ "www.josefundlena.at" ];
+      enableACME = true;
+      forceSSL = true;
+      root = builtins.fetchGit {
+        url = "git@github.com:knedlsepp/save-the-date.git";
+        rev = "f61e2e5acef0b955b4b94c8fe6ea83a27c25a2f4";
+      };
+    };
     virtualHosts."${domain-name}" = {
       serverAliases = [ "www.${domain-name}" ];
       enableACME = true;
