@@ -64,7 +64,6 @@ in {
 
   security.acme.email = "josef.kemetmueller@gmail.com";
   security.acme.acceptTerms = true;
-  security.hideProcessInformation = true;
 
   services.openssh.forwardX11 = true;
 
