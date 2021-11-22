@@ -92,7 +92,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "eee2a291a6e957672427082c4df8fdc67c9c35fa";
+        rev = "c4c14fdf5acdd71fdb0bd6369da282ec685af407";
       };
     };
     virtualHosts."xn--qeiaa.${domain-name}" = { # ❤❤❤.${domain-name} - Punycoded
@@ -149,30 +149,11 @@ in {
       forceSSL = true;
       locations."/".proxyPass = "http://127.0.0.1:4200";
     };
-    virtualHosts."mattermost.${domain-name}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8065";
-        proxyWebsockets = true;
-      };
-    };
   };
 
   services.shellinabox = {
     enable = true;
     extraOptions = [ "--localhost-only" ]; # Nginx makes sure it's https
-  };
-
-  services.mattermost = {
-    enable = true;
-    siteUrl = "https://mattermost.${domain-name}";
-    extraConfig = {
-      EmailSettings = {
-        SendEmailNotifications = true; # TODO: Set up SMTP server
-        EnablePreviewModeBanner = true;
-      };
-    };
   };
 
   services.hydra = {
