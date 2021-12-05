@@ -7,8 +7,6 @@ in {
 
   nix = {
     autoOptimiseStore = true;
-    daemonNiceLevel = 5;
-    daemonIONiceLevel = 5;
     extraOptions = ''
       auto-optimise-store = true
       min-free = ${toString (3 * 1024 * 1024 * 1024)}
