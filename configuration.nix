@@ -81,7 +81,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "git@github.com:knedlsepp/save-the-date.git";
-        rev = "32ae6dd2ecefb379d9568d037782176773e427ea";
+        rev = "48069d76939745df787f73ed77cd4404287e42a8";
       };
     };
     virtualHosts."${domain-name}" = {
