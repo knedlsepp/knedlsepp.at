@@ -93,23 +93,7 @@ in {
         rev = "c4c14fdf5acdd71fdb0bd6369da282ec685af407";
       };
     };
-    virtualHosts."xn--qeiaa.${domain-name}" = { # ❤❤❤.${domain-name} - Punycoded
-      serverAliases = [
-        "xn--c6haa.${domain-name}"
-        "xn--yr8haa.${domain-name}"
-        "xn--0r8haa.${domain-name}"
-        "xn--1r8haa.${domain-name}"
-        "xn--2r8haa.${domain-name}"
-        "xn--3r8haa.${domain-name}"
-        "xn--4r8haa.${domain-name}"
-        "xn--5r8haa.${domain-name}"
-        "xn--6r8haa.${domain-name}"
-        "xn--7r8haa.${domain-name}"
-        "xn--8r8haa.${domain-name}"
-        "xn--9r8haa.${domain-name}"
-        "xn--g6haa.${domain-name}"
-        "xn--r28haa.${domain-name}"
-      ];
+    virtualHosts."lalensch.at" = {
       enableACME = true;
       forceSSL = true;
       root = let
@@ -121,7 +105,7 @@ in {
             <html lang="de">
             <head>
               <meta charset="utf-8">
-              <title>❤️❤️❤️.${domain-name}</title>
+              <title>LaLensch</title>
               <style>
               h1 {
                   display: block;
@@ -131,7 +115,7 @@ in {
               </style>
             </head>
             <body>
-            <body><br><br><h1><center><div>I ❤️ 🐰</div></center></h1></body>
+            <body><br><br><h1><center><div>LaLensch.at coming soon 🛠️</div></center></h1></body>
             </html>
           '';
         }; in
