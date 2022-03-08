@@ -2,7 +2,7 @@
 let
   domain-name = "knedlsepp.at";
 in {
-  imports = [ <nixpkgs/nixos/modules/virtualisation/amazon-image.nix> ];
+  imports = [ ];
   ec2.hvm = true;
 
   nix = {

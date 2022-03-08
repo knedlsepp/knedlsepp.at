@@ -10,6 +10,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          "${nixpkgs}/nixos/modules/virtualisation/amazon-image.nix"
           {
             nix.registry.self.flake = self;
           }
