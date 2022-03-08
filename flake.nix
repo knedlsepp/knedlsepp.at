@@ -1,7 +1,7 @@
 {
   description = "knedlsepp.at";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-21.11";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
 
   outputs = { self, nixpkgs }:
   {
