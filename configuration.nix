@@ -165,6 +165,11 @@ in {
     }
   ];
 
+  users.users."sepp".openssh.authorizedKeys.keys = [
+    "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILzIWsoe/+qZ/bjEBf64bq0MOkikSnTq/95+b2pbgu4jAAAABHNzaDo= ssh:"
+  ];
+
+
   users.extraUsers.sepp = {
     isNormalUser = true;
     description = "Josef Knedlmüller";
