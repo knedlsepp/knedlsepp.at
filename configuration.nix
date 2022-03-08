@@ -6,11 +6,13 @@ in {
   ec2.hvm = true;
 
   nix = {
+    package = pkgs.nix_2_4;
     autoOptimiseStore = true;
     extraOptions = ''
       auto-optimise-store = true
       min-free = ${toString (3 * 1024 * 1024 * 1024)}
       max-free = ${toString (6 * 1024 * 1024 * 1024)}
+      experimental-features = nix-command flakes
     '';
     buildMachines = [
       {
@@ -81,6 +83,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "git@github.com:knedlsepp/save-the-date.git";
+        ref = "main";
         rev = "2115be59a1770bf585ad331361167c4ed0cbe67e";
       };
     };
