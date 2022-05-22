@@ -93,7 +93,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "c4c14fdf5acdd71fdb0bd6369da282ec685af407";
+        rev = "4e2ccb1f779c366426708c8e771996c604cbd82c";
       };
     };
     virtualHosts."lalensch.at" = {
@@ -124,11 +124,6 @@ in {
         }; in
       "${site}/share/www/";
     };
-    virtualHosts."hydra.${domain-name}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://127.0.0.1:3001";
-    };
     virtualHosts."shell.${domain-name}" = {
       enableACME = true;
       forceSSL = true;
@@ -141,15 +136,6 @@ in {
     extraOptions = [ "--localhost-only" ]; # Nginx makes sure it's https
   };
 
-  services.hydra = {
-    enable = true;
-    hydraURL = "https://hydra.${domain-name}";
-    notificationSender = "hydra@${domain-name}";
-    port = 3001;
-    minimumDiskFree = 1; #GiB
-    useSubstitutes = true;
-    package = pkgs.hydra-unstable;
-  };
   virtualisation.docker.enable = false;
 
   system.autoUpgrade = {
