@@ -93,7 +93,7 @@ in {
       forceSSL = true;
       root = builtins.fetchGit {
         url = "https://github.com/knedlsepp/knedlsepp.at-landing-page.git";
-        rev = "4e2ccb1f779c366426708c8e771996c604cbd82c";
+        rev = "0b53e064fd69b02222333e9ba666b0c034d3f362";
       };
     };
     virtualHosts."lalensch.at" = {
@@ -124,16 +124,6 @@ in {
         }; in
       "${site}/share/www/";
     };
-    virtualHosts."shell.${domain-name}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/".proxyPass = "http://127.0.0.1:4200";
-    };
-  };
-
-  services.shellinabox = {
-    enable = true;
-    extraOptions = [ "--localhost-only" ]; # Nginx makes sure it's https
   };
 
   virtualisation.docker.enable = false;
