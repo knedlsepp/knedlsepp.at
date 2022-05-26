@@ -148,6 +148,10 @@ in {
     "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAILzIWsoe/+qZ/bjEBf64bq0MOkikSnTq/95+b2pbgu4jAAAABHNzaDo= ssh:"
   ];
 
+  users.users."root".openssh.authorizedKeys.keys = [
+    "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAINqxgyVV3kg7DpyGTsEiy2n+Va1vKWherFw8OpmAjVXYAAAABHNzaDo= sepp@localhohohost"
+  ];
+
 
   users.extraUsers.sepp = {
     isNormalUser = true;
