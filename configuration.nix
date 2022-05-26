@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   domain-name = "knedlsepp.at";
 in {
@@ -81,11 +81,11 @@ in {
       serverAliases = [ "www.josefundlena.at" ];
       enableACME = true;
       forceSSL = true;
-      root = builtins.fetchGit {
+      root = lib.mkDefault (builtins.fetchGit {
         url = "git@github.com:knedlsepp/save-the-date.git";
         ref = "main";
         rev = "2115be59a1770bf585ad331361167c4ed0cbe67e";
-      };
+      });
     };
     virtualHosts."${domain-name}" = {
       serverAliases = [ "www.${domain-name}" ];

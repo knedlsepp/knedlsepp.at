@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1653395196,
-        "narHash": "sha256-EtSfmtrWg0vb+N+revM5fAlg7dswgb8qbwcSSCHN+1A=",
+        "lastModified": 1653593370,
+        "narHash": "sha256-lg1TEh6qoSAZnux3UYSkFT1fVDVme91vfPKexYA2CYs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6c97721a01ac68a5bd52569eb43e8dbba4ba7db3",
+        "rev": "6848cb6bfc2b434c59c95ae09a5b3f9bba515ec1",
         "type": "github"
       },
       "original": {
@@ -18,7 +18,25 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "save-the-date": "save-the-date"
+      }
+    },
+    "save-the-date": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653595725,
+        "narHash": "sha256-czyZ2H3UMLaGzZasoI8wJDZGtjvXKJTBorAiK1znvC0=",
+        "ref": "main",
+        "rev": "4a7da0263b399c1061e2adeedd83adbed1c9d966",
+        "revCount": 19,
+        "type": "git",
+        "url": "ssh://git@github.com/knedlsepp/save-the-date.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/knedlsepp/save-the-date.git"
       }
     }
   },
