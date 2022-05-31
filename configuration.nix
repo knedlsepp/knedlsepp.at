@@ -130,7 +130,8 @@ in {
 
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-20.09";
+    flake = "github:knedlsepp/knedlsepp.at";
+    dates = "hourly";
   };
   networking.hostName = "knedlsepp-aws";
   networking.firewall.allowedTCPPorts = [ 80 443
