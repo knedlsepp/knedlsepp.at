@@ -62,7 +62,7 @@ in {
     '';
   };
 
-  security.acme.email = "josef.kemetmueller@gmail.com";
+  security.acme.defaults.email = "josef.kemetmueller@gmail.com";
   security.acme.acceptTerms = true;
 
   services.openssh.forwardX11 = true;
