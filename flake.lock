@@ -25,11 +25,11 @@
     "save-the-date": {
       "flake": false,
       "locked": {
-        "lastModified": 1654024446,
-        "narHash": "sha256-q/s0sZQ62PiuMByN8302tklun7QZdCZu72XU+8so220=",
+        "lastModified": 1663416454,
+        "narHash": "sha256-Yyyj8l7nyS3Ibpv4hz1uPwgKsq+kWq1wUYbnpyZ3sgk=",
         "ref": "main",
-        "rev": "f143154285500ce103ae98b519faa808f8641ef0",
-        "revCount": 22,
+        "rev": "2d149de1600b2a5275d345509ae8d27053342659",
+        "revCount": 23,
         "type": "git",
         "url": "ssh://git@github.com/knedlsepp/save-the-date.git"
       },
