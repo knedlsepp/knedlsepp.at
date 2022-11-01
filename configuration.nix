@@ -28,7 +28,11 @@ in {
     };
     useSandbox = true;
   };
-  nixpkgs.overlays = [ ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      nginxStable = prev.nginxStable.override { openssl = pkgs.openssl_1_1; };
+    })
+  ];
   time.timeZone = "Europe/Vienna";
 
   nixpkgs.config.allowUnfree = true;
