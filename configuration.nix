@@ -31,10 +31,6 @@ in {
   nixpkgs.overlays = [ ];
   time.timeZone = "Europe/Vienna";
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "openssl-1.0.2u"
-  ];
-
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.packageOverrides = super: let self = super.pkgs; in {
   };
